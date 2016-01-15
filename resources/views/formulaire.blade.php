@@ -158,7 +158,7 @@
                 <span name="submit" id="submit" class="glyphicon glyphicon-floppy-disk"></span> Enregistrer le formulaire
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </button>
-            <button name="reset" id="cancel" type="reset" value="reset" class="btn btn-danger">
+            <button name="reset" id="cancel" type="reset" onclick="annule()" value="reset" class="btn btn-danger">
                 Annuler <span class="glyphicon glyphicon-remove"></span>
             </button>
         </div>
@@ -207,20 +207,12 @@
         chiffres = chiffres.replace(/[^0-9]/g, '');
 
         // Le champs est vide
-        if ( nombre == "" )
-        {
-            // alert ( "Le champs est vide !" );
-            return false;
-        }
+        if ( nombre == "" ){return false;}
 
         // Nombre de chiffres
         compteur = chiffres.length;
         console.log(compteur);
-        if (compteur!=10)
-        {
-            // alert("Assurez-vous de rentrer un numéro à 10 chiffres (xxx-xxx-xxxx)");
-            return false;
-        }
+        if (compteur!=10){return false;}
     }
    function verif_send(){
         valid = true;
@@ -230,10 +222,18 @@
         }
         else{document.getElementById('civilite').style.color = "green";}
         for(i in tab){
-                console.log(tab[i]);
-            if(tab[i] == 'mail'){if(verifiermail() == false){valid = false;}}
+            if(tab[i] == 'mail'){
+                if(verifiermail() == false){valid = false;}
+            }
             else if(tab[i] == 'fix' || tab[i] == 'perso'){
                 if(valider_numero(tab[i]) == false){
+                    valid=false;
+                    document.getElementById(i).className = "col-md-6 has-error";
+                }
+                else{document.getElementById(i).className = "col-md-6 has-success";}
+            }
+            else if(tab[i] == 'codpost'){
+                if(isNaN(document.getElementById(tab[i]).value) == true){
                     valid=false;
                     document.getElementById(i).className = "col-md-6 has-error";
                 }
@@ -250,10 +250,9 @@
         return valid;
    }
    function annule(){
-        tab = {'nom':'name','prenom':'prename','email':'mail','tel':'fix','mobile':'perso','datenaiss':'datnaiss','sports':'sport','categories':'categorie','adresse':'addr','cp':'codpost','ville':'town','nationalite':'nat'};
-        for(i in tab){
-            document.getElementById(i).className = "col-md-6 ";
-        }
+        tab = ['nom','prenom','email','tel','mobile','datenaiss','sports','categories','adresse','cp','ville','nationalite'];
+        for(i in tab){document.getElementById(tab[i]).className = "col-md-6 ";}
+        document.getElementById('civilite').style.color = '';
    }
 </script>
 @endsection
