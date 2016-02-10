@@ -50,23 +50,7 @@
             $('#categories').css('display','none');
         }
    });
-  // Methode d'autocompletion du terrain
-  $(function(){
-    $.get("alexController@autocomplete",{
-      'lieu': lieu, 
-    })
-    .done(function(lieu){
-      // console.log(lieu);
-      // On lance l'auto-complete
-      // $("#lieu").autocomplete({
-      //     source: lieu
-      // });      
-    });
   }); 
-
-
-
-	});
 		function create_planif(){
 			// console.log('je crée ma planif');
 			// alert('alert a ta mère'+$('#jour').val());

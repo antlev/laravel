@@ -44,7 +44,25 @@ class alexController extends Controller
         // $user->save();
     }
     public function getCalendar(){
-        return view('fullcalendar');
+        // $lieus = DB::select('select distinct nom from terrains');
+        // $lieu = array();
+        // foreach ($lieus as $key => $value) {
+        //     $lieu[] = $value->nom;
+        // }
+        // $retour = array(
+        //     'roles' => array('nom','categorie','created_at','update_at')
+        // );
+        // var_dump($lieu);
+        // return View('fullcalendar',$retour);
+        $table = 'terrains';
+        $terrains = DB::table($table)->paginate(15);
+        $name = alexController::getField($table);
+        $return = array(
+            'terrains' => $terrains,
+            'names' => $name,
+            'table' => $table
+        ); 
+        return View('fullcalendar', $return);
     }
     public function index($table){
         $terrains = DB::table($table)->paginate(15);
@@ -65,14 +83,14 @@ class alexController extends Controller
         return $retour[$table];
     }
 
-    public function autocomplete(){
-        $lieus = DB::select('select distinct nom from roles');
-        return json_encode($lieus);
-        // var_dump($lieus);
-        // $lieu = array();
-        // foreach ($lieus as $key => $value) {
-        //     $lieu[] = $value;
-        // }
-        // var_dump($request);
-    }
+    // public function autocomplete(){
+    //     $lieus = DB::select('select distinct nom from roles');
+    //     return json_encode($lieus);
+    //     // var_dump($lieus);
+    //     // $lieu = array();
+    //     // foreach ($lieus as $key => $value) {
+    //     //     $lieu[] = $value;
+    //     // }
+    //     // var_dump($request);
+    // }
 }
