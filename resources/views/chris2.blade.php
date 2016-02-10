@@ -56,8 +56,8 @@ footer {
   <link rel="stylesheet" href="{{ asset('css/font-awesome.css')}}">
 
  <script src="{{ asset('js/chris.js')}}"></script>
- <script src="{{ asset('js/script.js')}}"></script>
- <script src="{{ asset('jquery-2.1.1.min.js')}}"></script>
+
+ <script src="{{ asset('js/jquery-2.1.1.min.js')}}"></script>
  <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
  <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -75,6 +75,7 @@ footer {
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="http://172.16.3.25/laravel/public/index.php/forum/">Forum</a></li>          
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -102,7 +103,7 @@ footer {
                <input class="form-control" type="text" placeholder="Votre Message">
                <br>
              <a class="btn btn-primary" href="#">
-  <i class="fa fa-send"></i> Envoyer</a>
+  <i class="fa fa-send" id="sendmsg"></i> Envoyer</a>
 
                 </ul>
               </div><!--/.well -->
@@ -175,12 +176,11 @@ footer {
       <hr>
         
       <footer>
-        <p>© Company 2013</p>
+        <p>Â© Company 2013</p>
       </footer>
  
     </div><!--/.container-->
 
-   <script src="{{ asset('js/script.js')}}"></script>
-   <script src="{{ asset('/pusher.min.js')}}"></script>
-   <script src="{{ asset('/PusherChatWidget.js')}}"></script>
+
 <link href="pusher-realtime-chat-widget/src/pusher-chat.css" rel="stylesheet" />
+

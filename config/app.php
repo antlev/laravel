@@ -3,6 +3,12 @@
 return [
 
     /*
+        Mise en place du calendrier
+    */
+
+    'Calendar' => 'MaddHatter\LaravelFullcalendar\ServiceProvider',
+    
+    /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
     |--------------------------------------------------------------------------
@@ -65,7 +71,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------

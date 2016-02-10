@@ -1,32 +1,46 @@
 
 
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/login.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap.min.css') }}">
 
-<div class="secure">Secure Login form</div>
-{!! Form::open(array('url'=>'account/login','method'=>'POST', 'id'=>'myform')) !!}
-<div class="control-group">
-  <div class="controls">
-     {!! Form::text('email','',array('id'=>'','class'=>'form-control span6','placeholder' => 'Email')) !!}
-  </div>
-</div>
-<div class="control-group">
-  <div class="controls">
-  {!! Form::password('password',array('class'=>'form-control span6', 'placeholder' => 'Please Enter your Password')) !!}
-  </div>
-</div>
-{!! Form::button('Login', array('class'=>'send-btn')) !!}
-{!! Form::close() !!}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+                       <div class="wrap">
+                <p class="form-title">
+                    Ligue des Lorraines</p>
+<br>
+<br>
+<br>
+       <!--         <form class="login" action=# id="formsub"> -->
+<form method="POST" action="/auth/login" id="formsub">
+    {!! csrf_field() !!}
+                <input type="text" id="submit_mail" placeholder="Email" value="{{ old('email') }}"/>
+                <input type="password" id="submit_pw" placeholder="Mot de passe" />
+                <input type="submit" value="Connexion" id="submit" class="btn btn-success btn-sm" />
+                <div class="remember-forgot">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" />
+                                    Se rappeler
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 forgot-pass-content">
+                            <a href="javascription:void(0)" class="forgot-pass">Mot de passe oubli&eacute</a>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-<script type="text/javascript">
-$(document).ready(function(){
-  $('.send-btn').click(function(){            
-    $.ajax({
-      url: 'login',
-      type: "post",
-      data: {'email':$('input[name=email]').val(), '_token': $('input[name=_token]').val()},
-      success: function(data){
-        alert(data);
-      }
-    });      
-  }); 
-});
-</script>
+</div>
+<script src="{{ URL::asset('js/jquery-1.11.3.min.js') }}"></script>
+<script src="{{ URL::asset('js/login.js') }}"></script>
+<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script> 
+
+
